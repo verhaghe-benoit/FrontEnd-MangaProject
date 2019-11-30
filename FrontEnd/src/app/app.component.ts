@@ -9,3 +9,4 @@ import { MatCarouselSlide, MatCarouselSlideComponent } from '@ngmodule/material-
 export class AppComponent {
   title = 'FrontEnd';
 }
+

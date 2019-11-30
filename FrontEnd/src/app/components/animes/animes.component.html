@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+
+<mat-card class="filter mat-elevation-z5">
+    <mat-card-content>
+        <form>
+            <mat-form-field style="width: 50%;margin-right: 5%" >
+                <input matInput  placeholder="Title">
+            </mat-form-field>
+            <mat-checkbox style="color:#212121;"> Finished </mat-checkbox>
+
+            <br>
+            
+            <mat-form-field>
+                <input type="text" placeholder="Author"  matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>

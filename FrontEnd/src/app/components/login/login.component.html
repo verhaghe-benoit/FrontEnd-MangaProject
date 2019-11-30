@@ -1,0 +1,25 @@
+
+<div class="login-page">
+
+    <p class="grey">You don't have an account yet ?</p>
+    <button class="orange" routerLink="/register" routerLinkActive="active">Register here</button>
+
+    <form (submit)="submit()">
+    
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"  required>
+            
+        <button type="submit">Login</button>
+    </form>
+
+    <button class="grey2">Forgot your password ?</button>
+      
+
+    <div class="svg-design">
+        <img  width="100%" src="../../../assets/login-wave.png">
+    </div>
+</div>
+ 
