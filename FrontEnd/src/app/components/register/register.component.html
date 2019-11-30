@@ -1,0 +1,26 @@
+
+<div class="register-page">
+
+    <form (submit)="submit()">
+    
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required>
+        
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"  required>
+        
+        <label for="password_confirm">Confirm Password</label>
+        <input type="password" name="password_confirm" [(ngModel)]="password_confirm" required>
+            
+        <button type="submit">Register</button>
+    </form>
+      
+
+    <div class="svg-design">
+        <img  width="100%" src="../../../assets/register-wave.png">
+    </div>
+</div>
+ 
