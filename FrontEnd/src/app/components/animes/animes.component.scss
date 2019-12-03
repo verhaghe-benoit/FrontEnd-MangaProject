@@ -4,6 +4,7 @@
     top: 6%;
     left: 4%;
     color: white;
+    margin-bottom: 5% 
 }
 
 .mat-option{
@@ -16,3 +17,40 @@
     background-color: #424242;
     color:white;
   } 
+
+  .mat-expansion-panel{
+    background-color: transparent;
+} 
+
+
+.genre-checkbox{
+    color:#212121;
+    width: 15%;
+    float: left;
+}
+
+
+.anime_card{
+    background-color: #616163;
+    width: 90%;
+    height: 20%;
+    left: 4%;
+    top: 6%;
+    margin-top: 2%;
+    padding: 0;
+    font-family: Acme;
+}
+
+.title{
+    color:#F45F4A;
+    font-size: 18px;
+    margin-left: 260px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.li{
+    color:#212121;
+    font-family: Acme;
+    font-size: 12px;
+}
