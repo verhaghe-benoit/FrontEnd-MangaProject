@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<div>
+    <div style="background-color: black;height: 400px;position: absolute;">
+        <img src="../../../assets/hackRow.jpg" style="height: 400px;width: 100%;opacity: 0.6;">
+    </div>
+
+    <div class="title">
+        {{infos.title}}
+    </div>
+
+    <div class="anime_img">
+        <img src="../../../assets/hack.jpg" style="width: 400px;height: 300px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.6);">
+    </div>
+</div>
+
+<mat-card class="anime_card mat-elevation-z5">
+    <mat-card-content>
+        <mat-toolbar style="background-color: transparent;height: 220px;margin-left: 450px;">
+            <mat-toolbar-row>
+                <mat-icon>show_chart</mat-icon>
+                <span class="info_width"> Score : </span>
+                <span class="align_info"> {{infos.score}} </span>
+            </mat-toolbar-row>
+          
+            <mat-toolbar-row>
+                <mat-icon>flag</mat-icon>
+                <span class="info_width">Status : </span>
+                <span class="align_info"> {{infos.status}} </span>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row>
+                <mat-icon>play_circle_filled</mat-icon>
+                <span class="info_width">Episodes : </span>
+                <span class="align_info"> {{infos.episodes}} </span>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row>
+                <mat-icon>create</mat-icon>
+                <span class="info_width">Author(s) : </span>
+                <span class="align_info"> </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div class="synopsis">
+            {{infos.synopsisEN}}
+        </div>
+    </mat-card-content>
+</mat-card>

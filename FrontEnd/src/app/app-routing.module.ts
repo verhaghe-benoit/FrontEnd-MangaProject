@@ -1,3 +1,4 @@
+import { AnimesDetailsComponent } from './components/animes-details/animes-details.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: MainPageComponent},
   {path: 'animes', component: AnimesComponent},
+  {path: 'animes/:id', component: AnimesDetailsComponent}
 ];
 
 @NgModule({

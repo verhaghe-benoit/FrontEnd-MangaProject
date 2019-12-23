@@ -5,17 +5,16 @@ import {environment} from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AnimesService {
+
+export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
+  create(user) {
+    return this.http.post(`${environment.API}/api/users`, user);
+  }
+
   getAll() {
-    return this.http.get(`${environment.API}/api/animes.json`);
+    return this.http.get(`${environment.API}/api/users`);
   }
-
-  getById(id) {
-    return this.http.get(`${environment.API}/api/animes/${id}.json`);
-  }
-
 }
-

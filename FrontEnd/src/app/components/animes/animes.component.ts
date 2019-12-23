@@ -1,8 +1,6 @@
 import { AnimesService } from './../../services/animes.service';
 import { GenrelistService } from './../../services/genrelist.service';
 import { Component, OnInit } from '@angular/core';
-import { slideInOutAnimation } from 'src/app/animations';
-
 
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -11,14 +9,13 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
   selector: 'app-animes',
   templateUrl: './animes.component.html',
-  animations: [slideInOutAnimation],
-  host: { '[@slideInOutAnimation]': '' },
   styleUrls: ['./animes.component.scss']
 })
 export class AnimesComponent implements OnInit {
 
   private genre_list: any;
   private animes_list: any;
+  
 
   constructor( private genreListService: GenrelistService, private animesService: AnimesService ) {}
 
@@ -34,10 +31,7 @@ export class AnimesComponent implements OnInit {
         map(value => this._filter(value))
       );
 
-    this.genreListService.getAll()
-      .subscribe(response => {
-        this.genre_list = response;
-      });
+    
     
       this.animesService.getAll()
       .subscribe(response => {

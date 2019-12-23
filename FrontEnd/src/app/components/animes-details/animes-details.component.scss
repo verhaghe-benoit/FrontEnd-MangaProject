@@ -1,0 +1,52 @@
+.anime_img{
+    position: absolute;
+    top: 380px;
+    left: 120px;
+    z-index: 10;
+}
+
+.anime_card{
+    background-color: #616163;
+    width: 90%;
+    height: 500px;
+    top: 400px;
+    margin-left: 5%;
+    padding: 0;
+    font-family: Acme;
+}
+
+
+.li{
+    color:#212121;
+    font-family: Acme;
+    font-size: 12px;
+}
+
+
+.title{
+    position: absolute;
+    z-index: 10;
+    color:white;
+    font-size: 70px;
+    margin-left: 8%;
+    margin-top: 6%; 
+    width: 100%;
+    text-shadow: 2px 0px 5px #000000, -2px 0px 5px #000000, 0px 2px 5px #000000, 0px -2px 5px #000000;
+}
+
+.info_width{
+    margin-left: 15px;
+    width: 150px;
+}
+
+.align_info{
+    margin-left: 10px;
+}
+
+.synopsis{
+    margin-top: 50px;
+    margin-left:5%;
+    width: 90%;
+    text-align: justify;
+    font-size: 20px;
+}
