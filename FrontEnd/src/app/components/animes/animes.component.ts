@@ -32,6 +32,10 @@ export class AnimesComponent implements OnInit {
       );
 
     
+      this.genreListService.getAll()
+      .subscribe(response => {
+        this.genre_list = response;
+      });
     
       this.animesService.getAll()
       .subscribe(response => {
