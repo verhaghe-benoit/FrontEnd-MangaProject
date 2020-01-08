@@ -15,6 +15,7 @@ export class AnimesComponent implements OnInit {
 
   private genre_list: any;
   private animes_list: any;
+  private genre_filter = [];
   
 
   constructor( private genreListService: GenrelistService, private animesService: AnimesService ) {}
@@ -41,6 +42,34 @@ export class AnimesComponent implements OnInit {
       .subscribe(response => {
         this.animes_list = response;
       });
+  }
+
+  /*
+  FilterAnime(genre) {
+    this.animesService.getAnimeByFilter(genre)
+    .subscribe(response=> {
+      this.animes_list = response;
+      console.log(this.animes_list);
+    });
+  }*/
+
+  FilterAnime(genre){
+    var pushable = 1;
+    if(this.genre_filter.length == 0){
+      this.genre_filter.push(genre);
+    }else{
+      for(var i=0;i<this.genre_filter.length;i++){
+        if(this.genre_filter[i]==genre){
+          this.genre_filter.splice(i, 1);
+          pushable = 0;
+        }
+      }
+      if(pushable == 1){
+        this.genre_filter.push(genre);
+      }
+    }
+   
+    console.log(this.genre_filter); 
   }
 
   private _filter(value: string): string[] {

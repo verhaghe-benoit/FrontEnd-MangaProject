@@ -25,14 +25,13 @@
                             <mat-panel-description>
                                 <mat-icon *ngIf="!panelOpenState" color="warn" style="margin-top:12px;">add_circle_outline</mat-icon> 
                                 <mat-icon *ngIf="panelOpenState" color="warn" style="margin-top:12px;">remove_circle_outline</mat-icon>
-                                <p style="color:#F45F4A; margin-left:10px;"> Filtre des genres </p>
+                                <p style="color:#F45F4A; margin-left:10px;"> Filtre des genres</p>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <div *ngFor="let genre of genre_list">
-                            <mat-checkbox class="genre-checkbox"> {{genre.genre}} </mat-checkbox>
+                        <div *ngFor="let genres of genre_list">
+                            <mat-checkbox class="genre-checkbox" (change)="FilterAnime(genres.genre)"> {{genres.genre}} </mat-checkbox>
                         </div>
                     </mat-expansion-panel>
-
                 </form>
             </mat-card-content>
         </mat-card>
@@ -50,12 +49,16 @@
                         <li> Episodes :  </li>
                         <li> Author(s) :  </li>
                     </ul>
-                    <ul style = "float: left;list-style: none;margin-left:-1%">
+                    <ul style = "float: left;list-style: none;margin-left:-1%;width:100px;">
                         <li> {{animes.score}} </li>
                         <li> {{animes.status}}  </li>
                         <li> {{animes.episodes}} </li>
-                        <li> {{animes.genreLists | json}} </li>
+                        <li> 
+                        </li>
                     </ul>
+                    <mat-chip-list style="float:left;margin-left: 60px;" >
+                        <mat-chip style="font-size: 12px;" *ngFor="let genre of animes.genreLists"> {{genre.genre}}</mat-chip>
+                    </mat-chip-list>
             </mat-card-content>
         </mat-card>
     </div>
