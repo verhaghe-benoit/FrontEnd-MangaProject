@@ -56,20 +56,28 @@ export class AnimesComponent implements OnInit {
   FilterAnime(genre){
     var pushable = 1;
     if(this.genre_filter.length == 0){
+      this.genre_filter.push("&genreLists.genre=");
       this.genre_filter.push(genre);
     }else{
       for(var i=0;i<this.genre_filter.length;i++){
         if(this.genre_filter[i]==genre){
           this.genre_filter.splice(i, 1);
+          this.genre_filter.splice(i-1, 1);
           pushable = 0;
         }
       }
       if(pushable == 1){
+        this.genre_filter.push("&genreLists.genre=");
         this.genre_filter.push(genre);
       }
     }
-   
-    console.log(this.genre_filter); 
+    var test = this.genre_filter.join('');
+    this.animesService.getAnimeByFilter(test)
+      .subscribe(response => {
+        this.animes_list = response;
+      });
+    //console.log(this.genre_filter); 
+    console.log(test);
   }
 
   private _filter(value: string): string[] {
