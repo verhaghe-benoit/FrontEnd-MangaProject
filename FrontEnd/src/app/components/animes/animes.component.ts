@@ -12,10 +12,10 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./animes.component.scss']
 })
 export class AnimesComponent implements OnInit {
-
   private genre_list: any;
   private animes_list: any;
   private genre_filter = [];
+  private titleAnime: any;
   
 
   constructor( private genreListService: GenrelistService, private animesService: AnimesService ) {}
@@ -25,6 +25,8 @@ export class AnimesComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
+
+    let total;
     
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -41,6 +43,16 @@ export class AnimesComponent implements OnInit {
       this.animesService.getAll()
       .subscribe(response => {
         this.animes_list = response;
+        let total;
+
+        
+        for(let i=0;i<this.animes_list.length;i++){
+          total = 0;
+          for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
+            total = total + this.animes_list[i].scoreRelations[j].score;
+          }
+          this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
+        }
       });
   }
 
@@ -52,6 +64,13 @@ export class AnimesComponent implements OnInit {
       console.log(this.animes_list);
     });
   }*/
+
+ FilterTitle(title){
+  this.animesService.getAnimeByTitle(title)
+      .subscribe(response => {
+        this.animes_list = response;
+      });
+ }
 
   FilterAnime(genre){
     var pushable = 1;

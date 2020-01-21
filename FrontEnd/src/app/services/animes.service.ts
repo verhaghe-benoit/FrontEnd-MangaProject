@@ -10,11 +10,18 @@ export class AnimesService {
   constructor(private http: HttpClient) { }
 
   getAnimeByFilter(genre){
-    
     if(genre == ""){
       return this.http.get(`${environment.API}/api/animes.json`);
     }else{
       return this.http.get(`${environment.API}/api/animes.json?${genre}`);
+    }
+  }
+
+  getAnimeByTitle(title){
+    if(title == ""){
+      return this.http.get(`${environment.API}/api/animes.json`);
+    }else{
+      return this.http.get(`${environment.API}/api/animes.json?title=${title}`);
     }
   }
 
@@ -23,7 +30,7 @@ export class AnimesService {
   }
 
   getById(id) {
-    return this.http.get(`${environment.API}/api/animes/${id}`);
+    return this.http.get(`${environment.API}/api/animes/${id}.json`);
   }
 
 }

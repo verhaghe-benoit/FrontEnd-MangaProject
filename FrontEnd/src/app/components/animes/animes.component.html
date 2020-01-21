@@ -3,14 +3,13 @@
     <div>
         <mat-card class="filter mat-elevation-z5">
             <mat-card-content>
-                <form>
+                
                     <mat-form-field style="width: 50%;margin-right: 5%" >
-                        <input matInput  placeholder="Title">
+                        <input matInput  placeholder="Title"  [(ngModel)]="titleAnime" (input)="FilterTitle(titleAnime)"> 
                     </mat-form-field>
                     <mat-checkbox style="color:#212121;"> Finished </mat-checkbox>
 
-                    <br>
-                    
+                    <br>       
                     <mat-form-field>
                         <input type="text" placeholder="Author"  matInput [formControl]="myControl" [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete">
@@ -32,7 +31,6 @@
                             <mat-checkbox class="genre-checkbox" (change)="FilterAnime(genres.genre)"> {{genres.genre}} </mat-checkbox>
                         </div>
                     </mat-expansion-panel>
-                </form>
             </mat-card-content>
         </mat-card>
     </div>
@@ -50,7 +48,7 @@
                         <li> Author(s) :  </li>
                     </ul>
                     <ul style = "float: left;list-style: none;margin-left:-1%;width:100px;">
-                        <li> {{animes.score}} </li>
+                        <li> {{animes.score || "No score yet"}} </li>
                         <li> {{animes.status}}  </li>
                         <li> {{animes.episodes}} </li>
                         <li> 

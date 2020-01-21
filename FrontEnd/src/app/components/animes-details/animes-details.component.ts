@@ -10,21 +10,29 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AnimesDetailsComponent implements OnInit {
 
-  private infos;
+  private infos : any;
+  private score : any;
 
-  constructor( private animesService : AnimesService,private route: ActivatedRoute,
-    private router: Router, ) { }
+  constructor( private animesService : AnimesService,private route: ActivatedRoute ) { }
 
   ngOnInit() {
 
 
     let id = this.route.snapshot.paramMap.get('id');
+    let total = 0;
 
     this.animesService.getById(id)
       .subscribe(response => {
         this.infos = response;
+        for(let i=0;i<this.infos.scoreRelations.length;i++){
+          total = total + this.infos.scoreRelations[i].score;
+        }
+        this.score = (total/this.infos.scoreRelations.length);
       });
 
+    
+
+    
   }
 
 }

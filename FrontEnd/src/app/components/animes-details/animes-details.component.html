@@ -5,8 +5,8 @@
         <img src="../../../assets/hackRow.jpg" style="height: 400px;width: 100%;opacity: 0.6;">
     </div>
 
-    <div class="title">
-        {{infos.title}}
+    <div class="titleAnime">
+        {{infos?.title}}
     </div>
 
     <div class="anime_img">
@@ -20,19 +20,19 @@
             <mat-toolbar-row>
                 <mat-icon>show_chart</mat-icon>
                 <span class="info_width"> Score : </span>
-                <span class="align_info"> {{infos.score}} </span>
+                <span class="align_info"> {{score}} </span>
             </mat-toolbar-row>
           
             <mat-toolbar-row>
                 <mat-icon>flag</mat-icon>
                 <span class="info_width">Status : </span>
-                <span class="align_info"> {{infos.status}} </span>
+                <span class="align_info"> {{infos?.status}} </span>
             </mat-toolbar-row>
 
             <mat-toolbar-row>
                 <mat-icon>play_circle_filled</mat-icon>
                 <span class="info_width">Episodes : </span>
-                <span class="align_info"> {{infos.episodes}} </span>
+                <span class="align_info"> {{infos?.episodes}} </span>
             </mat-toolbar-row>
 
             <mat-toolbar-row>
@@ -43,7 +43,7 @@
         </mat-toolbar>
 
         <div class="synopsis">
-            {{infos.synopsisEN}}
+            {{infos?.synopsisEN}}
         </div>
     </mat-card-content>
 </mat-card>
