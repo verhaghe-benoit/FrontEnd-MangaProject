@@ -25,6 +25,14 @@ export class AnimesService {
     }
   }
 
+  getAnimeByStatus(status){
+      return this.http.get(`${environment.API}/api/animes.json?status=${status}`);
+  }
+
+  getAnimeByStatusOrTitle(my_filter){
+    return this.http.get(`${environment.API}/api/animes.json?${my_filter}`);
+  }
+
   getAll() {
     return this.http.get(`${environment.API}/api/animes.json`);
   }

@@ -1,0 +1,57 @@
+.left-panel{
+    width: 20%;
+    height: 472px;
+    margin-top: 40px;
+    margin-left: 2%;
+    background-color: #616163;
+    float: left;
+}
+
+.panel-container{
+    float: right;
+    width: 72%;
+    margin-right: 2%;
+    margin-top: 40px;
+}
+
+.panel{
+    height: 200px;
+    background-color: #616163;
+}
+
+canvas{
+    height: 80% !important;
+    margin: 0 auto;
+}
+
+li{
+    margin-left: -30px;
+    color:#212121;
+    font-family: Acme;
+    font-size: 18px;
+}
+
+.mat-icon {
+    font-size: 10px;
+    height: 10px;
+  }
+
+.green-icon{
+    color: #009900;
+}
+
+.blue-icon{
+    color: #3333cc;
+}
+
+.red-icon{
+    color: #b30000;
+}
+
+.yellow-icon{
+    color: #ffcc00;
+}
+
+.gray-icon{
+    color: #a6a6a6;
+}

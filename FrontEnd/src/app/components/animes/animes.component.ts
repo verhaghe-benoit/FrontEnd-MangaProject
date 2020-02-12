@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, isEmpty} from 'rxjs/operators';
 
 @Component({
   selector: 'app-animes',
@@ -16,7 +16,12 @@ export class AnimesComponent implements OnInit {
   private animes_list: any;
   private genre_filter = [];
   private titleAnime: any;
-  
+  private nbGenre = 0;
+  private status_filter = 0;
+
+  private mytitle="";
+  private mystatus="";
+  private request;
 
   constructor( private genreListService: GenrelistService, private animesService: AnimesService ) {}
 
@@ -44,8 +49,6 @@ export class AnimesComponent implements OnInit {
       .subscribe(response => {
         this.animes_list = response;
         let total;
-
-        
         for(let i=0;i<this.animes_list.length;i++){
           total = 0;
           for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
@@ -54,6 +57,8 @@ export class AnimesComponent implements OnInit {
           this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
         }
       });
+
+      
   }
 
   /*
@@ -65,39 +70,99 @@ export class AnimesComponent implements OnInit {
     });
   }*/
 
- FilterTitle(title){
-  this.animesService.getAnimeByTitle(title)
-      .subscribe(response => {
-        this.animes_list = response;
-      });
- }
+  
 
-  FilterAnime(genre){
+  TestFilter(genre){
+    var final_list = [];
+    var inc = 0;
     var pushable = 1;
-    if(this.genre_filter.length == 0){
-      this.genre_filter.push("&genreLists.genre=");
-      this.genre_filter.push(genre);
-    }else{
-      for(var i=0;i<this.genre_filter.length;i++){
-        if(this.genre_filter[i]==genre){
-          this.genre_filter.splice(i, 1);
-          this.genre_filter.splice(i-1, 1);
-          pushable = 0;
-        }
-      }
-      if(pushable == 1){
-        this.genre_filter.push("&genreLists.genre=");
-        this.genre_filter.push(genre);
-      }
-    }
-    var test = this.genre_filter.join('');
-    this.animesService.getAnimeByFilter(test)
+
+    this.animesService.getAll()
       .subscribe(response => {
         this.animes_list = response;
+        
+        if(this.genre_filter.length == 0){
+          this.genre_filter.push("this.animes_list[k].genreLists[l].genre==");
+          this.genre_filter.push('"'+genre+'"');
+          this.nbGenre++;
+        }else{
+          for(var i=0;i<this.genre_filter.length;i++){
+            if(this.genre_filter[i]=='"'+genre+'"'){
+              if(i == 1){
+                this.genre_filter.splice(i+1,1);
+                this.genre_filter.splice(i,1);
+                this.genre_filter.splice(i-1,1);
+                this.nbGenre--;
+              }else{
+                this.genre_filter.splice(i-2, 3);
+                this.nbGenre--;
+              }
+              pushable = 0;
+            }
+          }
+          if(pushable == 1){
+            this.genre_filter.push(" || ")
+            this.genre_filter.push("this.animes_list[k].genreLists[l].genre==");
+            this.genre_filter.push('"' + genre + '"');
+            this.nbGenre++;
+          }
+        }
+        var test = this.genre_filter.join('');
+
+        if(test !=""){
+          outerloop: for(var k=0;k<this.animes_list.length;k++){
+            inc = 0;
+            for(var l=0; l<this.animes_list[k].genreLists.length;l++){ 
+              if(eval(test)){
+                inc++;
+              }
+              if(inc == this.nbGenre){
+                final_list.push(this.animes_list[k]);
+                continue outerloop;
+              }
+            }
+          }
+          this.animes_list = final_list;
+        }
+        console.log(this.animes_list);
       });
-    //console.log(this.genre_filter); 
-    console.log(test);
   }
+
+
+FilterAnime(title,bool_status){
+  
+  if(title === undefined || title === null || title == ""){
+    this.mytitle = "";
+  }else{
+    this.mytitle = "&title="+title;
+  }
+
+  if(bool_status == 1){
+    if(this.status_filter == 0){
+      this.mystatus = "&status=Finished Airing";
+      this.status_filter++;
+    }else{
+      this.mystatus = "";
+      this.status_filter--;
+    }
+  }
+  
+  this.request = this.mytitle + this.mystatus;
+  
+  this.animesService.getAnimeByStatusOrTitle(this.request)
+        .subscribe( response => {
+          this.animes_list=response;
+          let total;
+          for(let i=0;i<this.animes_list.length;i++){
+            total = 0;
+            for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
+              total = total + this.animes_list[i].scoreRelations[j].score;
+            }
+            this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
+          }
+      });
+  }
+
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();

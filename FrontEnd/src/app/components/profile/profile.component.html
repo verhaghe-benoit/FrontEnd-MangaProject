@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+<mat-card class="left-panel">
+    <mat-card-header>
+      <mat-card-title>{{username}}'s Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        
+    </mat-card-content>
+  </mat-card>
+  
+<div class="panel-container">
+
+    <mat-card class="panel">
+        <mat-card-header>
+            <mat-card-title>Anime Statistics</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div style="float: left;margin-right: 30px;"> 
+                <ul style="list-style: none;">
+                    <li> <mat-icon class="green-icon">lens</mat-icon> Watching </li>
+                    <li> <mat-icon class="blue-icon">lens</mat-icon> Completed </li>
+                    <li> <mat-icon class="yellow-icon">lens</mat-icon> On-Hold </li>
+                    <li> <mat-icon class="red-icon">lens</mat-icon> Dropped </li>
+                    <li> <mat-icon class="gray-icon">lens</mat-icon> Plan to watch </li>
+                </ul>
+            </div>
+            <div style="float: left;"> 
+                <ul style="list-style: none;">
+                    <li> {{nb_watching}} </li>
+                    <li> {{nb_completed}} </li>
+                    <li> {{nb_onhold}} </li>
+                    <li> {{nb_dropped}} </li>
+                    <li> {{nb_planned}} </li>
+                </ul>
+            </div>
+            <div style="float: right;margin-top:35px">
+                <canvas baseChart height="80px"
+                [data]="doughnutChartData"
+                [colors]="doughnutChartColors"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [options]="doughnutChartOptions">
+                </canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="panel" style="margin-top: 40px;">
+        <mat-card-header>
+        <mat-card-title>Manga Statistics</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div style="float: left;margin-right: 30px;"> 
+                <ul style="list-style: none;">
+                    <li> Reading </li>
+                    <li> Completed </li>
+                    <li> On-Hold </li>
+                    <li> Dropped </li>
+                    <li> Plan to read </li>
+                </ul>
+            </div>
+            <div style="float: left;"> 
+                <ul style="list-style: none;">
+                    <li> {{nb_watching}} </li>
+                    <li> {{nb_completed}} </li>
+                    <li> {{nb_onhold}} </li>
+                    <li> {{nb_dropped}} </li>
+                    <li> {{nb_planned}} </li>
+                </ul>
+            </div>
+            <div style="float: right;margin-top:35px">
+                <canvas baseChart height="80px"
+                [data]="doughnutChartData"
+                [colors]="doughnutChartColors"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [options]="doughnutChartOptions">
+            </canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

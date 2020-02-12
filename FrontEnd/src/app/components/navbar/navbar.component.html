@@ -5,9 +5,12 @@
     <button class="effect">Manga</button>
     <button class="effect">Community</button>
   </div>
-  <div class="account">
+  <div *ngIf='logged!="true"' class="account">
     <button class="effect" routerLink="/login" routerLinkActive="active">Login</button>
     <button class="register" routerLink="/register" routerLinkActive="active">Sign Up</button>
+  </div>
+  <div *ngIf='logged=="true"' class="account">
+    <button class="effect" routerLink="/profile/{{decoded['username']}}" routerLinkActive="active">{{decoded["username"]}} </button>
   </div>
 </div>
 
@@ -16,4 +19,9 @@
     <mat-carousel-slide image="../assets/frame.png"></mat-carousel-slide>
     <mat-carousel-slide image="../assets/onep.png"></mat-carousel-slide>
     <mat-carousel-slide image="../assets/dbz.png"></mat-carousel-slide>
-  </mat-carousel>-->
+  </mat-carousel>
+
+
+
+<mat-icon>expand_more</mat-icon>
+-->

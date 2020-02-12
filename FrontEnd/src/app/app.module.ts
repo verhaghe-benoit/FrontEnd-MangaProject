@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { AnimesDetailsComponent } from './components/animes-details/animes-details.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { AnimesDetailsComponent } from './components/animes-details/animes-detai
     LoginComponent,
     MainPageComponent,
     AnimesComponent,
-    AnimesDetailsComponent
+    AnimesDetailsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { AnimesDetailsComponent } from './components/animes-details/animes-detai
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
