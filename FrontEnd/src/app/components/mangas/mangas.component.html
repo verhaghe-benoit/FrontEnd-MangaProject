@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="mangas-page">
+    <div>
+        <mat-card class="filter mat-elevation-z5">
+            <mat-card-content>
+                
+                    <mat-form-field style="width: 50%;margin-right: 5%" >
+                        <input matInput  placeholder="Title"  [(ngModel)]="titleManga" (input)="FilterAnime(titleManga,0)"> 
+                    </mat-form-field>
+                    <mat-checkbox style="color:#212121;" (change)="FilterAnime(titleManga,1)"> Finished </mat-checkbox>
+
+                    <br>       
+                    <mat-form-field>
+                        <input type="text" placeholder="Author"  matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false"hideToggle="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                <mat-icon *ngIf="!panelOpenState" color="warn" style="margin-top:12px;">add_circle_outline</mat-icon> 
+                                <mat-icon *ngIf="panelOpenState" color="warn" style="margin-top:12px;">remove_circle_outline</mat-icon>
+                                <p style="color:#F45F4A; margin-left:10px;"> Filtre des genres</p>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div *ngFor="let genres of genre_list">
+                            <mat-checkbox class="genre-checkbox" (change)="TestFilter(genres.genre)"> {{genres.genre}} </mat-checkbox>
+                        </div>
+                    </mat-expansion-panel>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        
+        <mat-card class="manga_card mat-elevation-z5" *ngFor="let mangas of mangas_list">
+            <mat-card-content>
+                    <img src="../../../assets/91days.jpg" style="float:left;width: auto;  height: 150px;">
+                    <div class="title" routerLink="/mangas/{{mangas.id}}" routerLinkActive="active"> {{mangas.title}}</div>
+                    <ul style = "float: left;list-style: none;">
+                        <li> Score :  </li>
+                        <li> Status :  </li>
+                        <li> Episodes :  </li>
+                        <li> Author(s) :  </li>
+                    </ul>
+                    <ul style = "float: left;list-style: none;margin-left:-1%;width:100px;">
+                        <li> {{mangas.score || "No score yet"}} </li>
+                        <li> {{mangas.status}}  </li>
+                        <li> {{mangas.episodes}} </li>
+                        <li> 
+                        </li>
+                    </ul>
+                    <mat-chip-list style="float:left;margin-left: 60px;" >
+                    <mat-chip style="font-size: 12px;" [ngStyle]="{'background-color': genre.color}" *ngFor="let genre of mangas.genreLists"> {{genre.genre}}</mat-chip>
+                    </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

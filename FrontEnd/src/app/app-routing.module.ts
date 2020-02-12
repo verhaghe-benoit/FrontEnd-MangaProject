@@ -1,3 +1,4 @@
+import { MangasComponent } from './components/mangas/mangas.component';
 import { AnimesDetailsComponent } from './components/animes-details/animes-details.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path: 'home', component: MainPageComponent},
   {path: 'animes', component: AnimesComponent},
   {path: 'animes/:id', component: AnimesDetailsComponent},
+  {path: 'mangas', component: MangasComponent},
+  //{path: 'mangas/:id', component: MangasDetailsComponent},
   {path: 'profile/:username', component: ProfileComponent}
 ];
 

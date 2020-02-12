@@ -30,8 +30,6 @@ export class AnimesComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-
-    let total;
     
     this.filteredOptions = this.myControl.valueChanges
       .pipe(

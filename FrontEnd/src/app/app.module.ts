@@ -18,6 +18,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { AnimesDetailsComponent } from './components/animes-details/animes-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MangasComponent } from './components/mangas/mangas.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     MainPageComponent,
     AnimesComponent,
     AnimesDetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    MangasComponent
   ],
   imports: [
     BrowserModule,
