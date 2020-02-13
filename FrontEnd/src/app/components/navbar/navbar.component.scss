@@ -9,6 +9,13 @@
     color: #FFFFFF;
 }
 
+
+@media screen and (max-width:800px) {
+    .logo, .menu .effect, .account, .account .effect {
+      font-size:16px; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
+
 .logo{
     width: 20%;
     height: 100%;

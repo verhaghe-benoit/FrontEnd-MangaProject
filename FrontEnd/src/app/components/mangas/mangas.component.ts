@@ -50,10 +50,10 @@ export class MangasComponent implements OnInit {
         let total;
         for(let i=0;i<this.mangas_list.length;i++){
           total = 0;
-          for(let j=0;j<this.mangas_list[i].scoreRelations.length;j++){
-            total = total + this.mangas_list[i].scoreRelations[j].score;
+          for(let j=0;j<this.mangas_list[i].scoreRelationMangas.length;j++){
+            total = total + this.mangas_list[i].scoreRelationMangas[j].score;
           }
-          this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelations.length);
+          this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelationMangas.length);
         }
       });
 
@@ -85,10 +85,10 @@ export class MangasComponent implements OnInit {
             let total;
             for(let i=0;i<this.mangas_list.length;i++){
               total = 0;
-              for(let j=0;j<this.mangas_list[i].scoreRelations.length;j++){
-                total = total + this.mangas_list[i].scoreRelations[j].score;
+              for(let j=0;j<this.mangas_list[i].scoreRelationMangas.length;j++){
+                total = total + this.mangas_list[i].scoreRelationMangas[j].score;
               }
-              this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelations.length);
+              this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelationMangas.length);
             }
         });
     }

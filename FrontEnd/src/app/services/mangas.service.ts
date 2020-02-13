@@ -19,7 +19,7 @@ export class MangasService {
   }
 
   getById(id) {
-    return this.http.get(`${environment.API}/api/mangas.json/${id}`);
+    return this.http.get(`${environment.API}/api/mangas/${id}.json`);
   }
 
 }
