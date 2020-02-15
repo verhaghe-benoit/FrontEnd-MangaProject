@@ -47,16 +47,20 @@ export class MangasComponent implements OnInit {
       this.mangasService.getAll()
       .subscribe(response => {
         this.mangas_list = response;
-        let total;
-        for(let i=0;i<this.mangas_list.length;i++){
-          total = 0;
-          for(let j=0;j<this.mangas_list[i].scoreRelationMangas.length;j++){
-            total = total + this.mangas_list[i].scoreRelationMangas[j].score;
-          }
-          this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelationMangas.length);
-        }
+        this.CalculateScore();
       });
 
+  }
+
+  CalculateScore(){
+    let total;
+    for(let i=0;i<this.mangas_list.length;i++){
+      total = 0;
+      for(let j=0;j<this.mangas_list[i].scoreRelationMangas.length;j++){
+        total = total + this.mangas_list[i].scoreRelationMangas[j].score;
+      }
+      this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelationMangas.length);
+    }
   }
 
   FilterAnime(title,bool_status){
@@ -82,14 +86,7 @@ export class MangasComponent implements OnInit {
     this.mangasService.getMangaByStatusOrTitle(this.request)
           .subscribe( response => {
             this.mangas_list=response;
-            let total;
-            for(let i=0;i<this.mangas_list.length;i++){
-              total = 0;
-              for(let j=0;j<this.mangas_list[i].scoreRelationMangas.length;j++){
-                total = total + this.mangas_list[i].scoreRelationMangas[j].score;
-              }
-              this.mangas_list[i].score = (total/this.mangas_list[i].scoreRelationMangas.length);
-            }
+            this.CalculateScore();
         });
     }
   

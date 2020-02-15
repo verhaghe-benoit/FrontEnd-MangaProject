@@ -46,17 +46,21 @@ export class AnimesComponent implements OnInit {
       this.animesService.getAll()
       .subscribe(response => {
         this.animes_list = response;
-        let total;
-        for(let i=0;i<this.animes_list.length;i++){
-          total = 0;
-          for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
-            total = total + this.animes_list[i].scoreRelations[j].score;
-          }
-          this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
-        }
+        this.CalculateScore();
       });
 
       
+  }
+
+  CalculateScore(){
+    let total;
+    for(let i=0;i<this.animes_list.length;i++){
+      total = 0;
+      for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
+        total = total + this.animes_list[i].scoreRelations[j].score;
+      }
+      this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
+    }
   }
 
   /*
@@ -150,14 +154,7 @@ FilterAnime(title,bool_status){
   this.animesService.getAnimeByStatusOrTitle(this.request)
         .subscribe( response => {
           this.animes_list=response;
-          let total;
-          for(let i=0;i<this.animes_list.length;i++){
-            total = 0;
-            for(let j=0;j<this.animes_list[i].scoreRelations.length;j++){
-              total = total + this.animes_list[i].scoreRelations[j].score;
-            }
-            this.animes_list[i].score = (total/this.animes_list[i].scoreRelations.length);
-          }
+          this.CalculateScore();
       });
   }
 

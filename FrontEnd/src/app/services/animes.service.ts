@@ -30,11 +30,11 @@ export class AnimesService {
   }
 
   getAnimeByStatusOrTitle(my_filter){
-    return this.http.get(`${environment.API}/api/animes.json?${my_filter}`);
+    return this.http.get(`${environment.API}/api/animes.json?order[title]=asc&${my_filter}`);
   }
 
   getAll() {
-    return this.http.get(`${environment.API}/api/animes.json`);
+    return this.http.get(`${environment.API}/api/animes.json?order[title]=asc`);
   }
 
   getById(id) {
