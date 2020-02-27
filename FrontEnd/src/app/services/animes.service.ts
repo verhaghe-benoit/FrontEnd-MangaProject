@@ -40,6 +40,5 @@ export class AnimesService {
   getById(id) {
     return this.http.get(`${environment.API}/api/animes/${id}.json`);
   }
-
 }
 
