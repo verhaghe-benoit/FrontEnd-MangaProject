@@ -20,6 +20,7 @@ import { AnimesDetailsComponent } from './components/animes-details/animes-detai
 import { ProfileComponent } from './components/profile/profile.component';
 import { MangasComponent } from './components/mangas/mangas.component';
 import { MangasDetailsComponent } from './components/mangas-details/mangas-details.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MangasDetailsComponent } from './components/mangas-details/mangas-detai
     AnimesDetailsComponent,
     ProfileComponent,
     MangasComponent,
-    MangasDetailsComponent
+    MangasDetailsComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,9 @@ import { MangasDetailsComponent } from './components/mangas-details/mangas-detai
     ChartsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ConfirmDialogComponent
+ ]
 })
 export class AppModule { }

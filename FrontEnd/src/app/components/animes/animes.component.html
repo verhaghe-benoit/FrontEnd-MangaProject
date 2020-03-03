@@ -7,7 +7,7 @@
                     <mat-form-field style="width: 50%;margin-right: 5%" >
                         <input matInput  placeholder="Title"  [(ngModel)]="titleAnime" (input)="FilterAnime(titleAnime,0)"> 
                     </mat-form-field>
-                    <mat-checkbox style="color:#212121;" (change)="FilterAnime(titleAnime,1)"> Finished </mat-checkbox>
+                    <mat-checkbox (change)="FilterAnime(titleAnime,1)"> Finished </mat-checkbox>
 
                     <br>       
                     <mat-form-field>
@@ -24,7 +24,7 @@
                             <mat-panel-description>
                                 <mat-icon *ngIf="!panelOpenState" color="warn" style="margin-top:12px;">add_circle_outline</mat-icon> 
                                 <mat-icon *ngIf="panelOpenState" color="warn" style="margin-top:12px;">remove_circle_outline</mat-icon>
-                                <p style="color:#F45F4A; margin-left:10px;"> Filtre des genres</p>
+                                <p style="color:#F45F4A; margin-left:10px;"> Genre filter</p>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
                         <div *ngFor="let genres of genre_list">

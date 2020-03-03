@@ -14,4 +14,7 @@ export class CommentsService {
     return this.http.post(`${environment.API}/api/comments_animes`,data);
   }
 
+  postCommentOnManga(data){
+    return this.http.post(`${environment.API}/api/comments_mangas`,data);
+  }
 }

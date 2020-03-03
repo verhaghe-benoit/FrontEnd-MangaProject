@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-animes-details',
@@ -20,7 +22,26 @@ export class AnimesDetailsComponent implements OnInit {
   private decoded; 
   private id_user;
 
-  constructor( private animesService : AnimesService,private commentService : CommentsService,private userService : UserService, private route: ActivatedRoute,private router: Router ) { }
+  constructor( private animesService : AnimesService,
+    private commentService : CommentsService,
+    private userService : UserService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog ) { }
+
+    openDialog(): void {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '50wv',
+        height: '20hv',
+        data: {title: "Are you sure you want to post this comment ?" ,comment: this.comment}
+      });
+  
+      dialogRef.afterClosed().subscribe(dialogResult => {
+        if(dialogResult==true){
+          this.onSubmit()
+        };
+      });
+    }
 
   ngOnInit() {
 
@@ -63,5 +84,4 @@ export class AnimesDetailsComponent implements OnInit {
     this.commentService.postCommentOnAnime(data).subscribe();
 
   }
-
 }

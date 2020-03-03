@@ -6,7 +6,7 @@
 }
 
 .anime_card{
-    background-color: #616163;
+    background-color: #424242;
     width: 90%;
     margin-left: 5%;
     padding: 0;
@@ -14,20 +14,44 @@
 }
 
 .comment_card{
-    background-color: #616163;
+    background-color: #424242;
     width: 90%;
     margin-left: 5%;
     padding: 0;
-    font-family: Acme;
+    font-family: "EB Garamond";
     padding-bottom: 25px;
+    padding-top: 15px;
     text-align: justify;
 }
 
 .submit_comment{
     position: relative;
     left: 80%;
+    color: white;
+    padding: 5px;
+    background: #F45F4A;
+    border: 1px solid #424242;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Acme;
+    font-size: 16px;
+    text-align:center;
 }
 
+.comment_card .mat-card-title{
+    color: #F45F4A;
+    opacity: 100%;
+}
+
+.comment_card .mat-card-subtitle{
+    color: white;
+    opacity: 45%;
+}
+
+.comment_card .mat-card-content{
+    color: white;
+    opacity: 75%;
+}
 
 .li{
     color:#212121;
@@ -62,16 +86,30 @@
     width: 90%;
     text-align: justify;
     font-size: 20px;
+    color: #FFFFFF;
+    opacity: 75%;
+    font-family: "EB Garamond";
+    white-space: pre-wrap;
 }
 
-button[type=submit] {
-    color: white;
-    padding: 5px;
-    background: #F45F4A;
-    border: 1px solid #616163;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-family: Acme;
-    font-size: 16px;
-    text-align:center;
-  }
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+    opacity: 50%;
+} 
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #F45F4A !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #F45F4A !important;
+}
+
+::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+    opacity: 50%;
+}

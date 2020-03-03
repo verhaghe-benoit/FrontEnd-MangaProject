@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
 
 <div>
-    <div style="background-color: black;height: 400px;position: absolute;">
+    <div style="background-color: black;height: 400px;position: relative;">
         <img src="../../../assets/hackRow.jpg" style="height: 400px;width: 100vw;opacity: 0.6;">
-    </div>
-
-    <div class="titleManga">
-        {{infos?.title}}
+        <div class="titleManga">
+            {{infos?.title}}
+        </div>
     </div>
 
     <div class="manga_img">
@@ -45,5 +44,27 @@
         <div class="synopsis">
             {{infos?.synopsisEN}}
         </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="comment_card mat-elevation-z5" style="margin-top: 10px;margin-bottom: 50px;">
+    <mat-card-content>
+        <form>
+            <mat-form-field style="width:82%;padding-left:10%;padding-top: 20px;">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput id="comment" name="comment" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" [(ngModel)]="comment"></textarea>
+            </mat-form-field><br>
+            <button class="submit_comment" (click)="openDialog()">New comment</button>
+        </form>      
+    </mat-card-content>
+</mat-card>
+  
+<mat-card class="comment_card mat-elevation-z5" style="margin-bottom: 15px;"*ngFor="let comments of infos?.commentsMangas">
+    <mat-card-header>
+        <mat-card-title>{{comments.user.username}}</mat-card-title>
+        <mat-card-subtitle> {{comments.date | date:'dd/MM/yy, h:mm' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="padding-left: 30px;padding-right: 30px;font-size: 14px;white-space: pre-wrap;">
+        {{comments.comment}}
     </mat-card-content>
 </mat-card>
