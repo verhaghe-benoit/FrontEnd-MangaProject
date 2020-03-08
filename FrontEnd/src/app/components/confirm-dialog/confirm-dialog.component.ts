@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -7,14 +8,29 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./confirm-dialog.component.scss']
 })
 
-export class ConfirmDialogComponent{
-  constructor(
+
+export class ConfirmDialogComponent implements OnInit{
+  private logged;
+
+  constructor(private router : Router,
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+    ngOnInit(){
+      if(localStorage.getItem("logged")== null){
+        this.logged = false;
+      }
+    }
 
     onConfirm(): void {
       // Close the dialog, return true
       this.dialogRef.close(true);
+    }
+
+    gotologging(): void {
+      // Close the dialog, return true
+      this.dialogRef.close(false);
+      this.router.navigate(['/login']);
     }
   
     onDismiss(): void {

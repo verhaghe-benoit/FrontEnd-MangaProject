@@ -55,7 +55,12 @@
                 <mat-label>Leave a comment</mat-label>
                 <textarea matInput id="comment" name="comment" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" [(ngModel)]="comment"></textarea>
             </mat-form-field><br>
-            <button class="submit_comment" (click)="openDialog()"> New comment</button>
+            <div *ngIf="logged == false; else elseBlock">
+                <button  class="submit_comment" (click)='openDialog("You need to be logged to do that.")'>New comment</button>
+            </div>
+            <ng-template #elseBlock>
+                <button  class="submit_comment" (click)='openDialog("Are you sure you want to post this comment ?")'>New comment</button>
+              </ng-template>
         </form>      
     </mat-card-content>
 </mat-card>

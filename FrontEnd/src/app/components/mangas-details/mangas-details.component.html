@@ -54,14 +54,20 @@
                 <mat-label>Leave a comment</mat-label>
                 <textarea matInput id="comment" name="comment" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" [(ngModel)]="comment"></textarea>
             </mat-form-field><br>
-            <button class="submit_comment" (click)="openDialog()">New comment</button>
+            <div *ngIf="logged == false; else elseBlock">
+                <button  class="submit_comment" (click)='openDialog("You need to be logged to do that.")'>New comment</button>
+            </div>
+            <ng-template #elseBlock>
+                <button  class="submit_comment" (click)='openDialog("Are you sure you want to post this comment ?")'>New comment</button>
+              </ng-template>
+            
         </form>      
     </mat-card-content>
 </mat-card>
   
-<mat-card class="comment_card mat-elevation-z5" style="margin-bottom: 15px;"*ngFor="let comments of infos?.commentsMangas">
+<mat-card class="comment_card mat-elevation-z5" style="margin-bottom: 15px;" *ngFor="let comments of infos?.commentsMangas">
     <mat-card-header>
-        <mat-card-title>{{comments.user.username}}</mat-card-title>
+        <mat-card-title >{{comments.user.username}}</mat-card-title>
         <mat-card-subtitle> {{comments.date | date:'dd/MM/yy, h:mm' }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content style="padding-left: 30px;padding-right: 30px;font-size: 14px;white-space: pre-wrap;">

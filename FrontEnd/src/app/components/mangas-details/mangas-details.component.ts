@@ -18,6 +18,7 @@ export class MangasDetailsComponent implements OnInit {
   private score : any;
   private comment: string;
   private token;
+  private logged: any;
   private decoded; 
   private id_user;
 
@@ -28,11 +29,11 @@ export class MangasDetailsComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog) { }
 
-  openDialog(): void {
+  openDialog(msg): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '50wv',
       height: '20hv',
-      data: {title: "Are you sure you want to post this comment ?" ,comment: this.comment}
+      data: {title: msg ,comment: this.comment}
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
@@ -44,6 +45,10 @@ export class MangasDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    if(localStorage.getItem("logged") == null){
+      this.logged = false ;
+    }
+    
     let id = this.route.snapshot.paramMap.get('id');
     let total = 0;
 
@@ -80,6 +85,7 @@ export class MangasDetailsComponent implements OnInit {
     };
     
     this.commentService.postCommentOnManga(data).subscribe();
+    //this.router.navigate(['/mangas/'+id]);
 
   }
 

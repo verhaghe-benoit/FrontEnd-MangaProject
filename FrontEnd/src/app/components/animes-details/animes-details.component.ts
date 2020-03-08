@@ -21,6 +21,7 @@ export class AnimesDetailsComponent implements OnInit {
   private token;
   private decoded; 
   private id_user;
+  private logged;
 
   constructor( private animesService : AnimesService,
     private commentService : CommentsService,
@@ -45,6 +46,9 @@ export class AnimesDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    if(localStorage.getItem("logged") == null){
+      this.logged = false ;
+    }
 
     let id = this.route.snapshot.paramMap.get('id');
     let total = 0;
