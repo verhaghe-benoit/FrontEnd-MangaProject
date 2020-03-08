@@ -21,6 +21,7 @@ export class MangasDetailsComponent implements OnInit {
   private logged: any;
   private decoded; 
   private id_user;
+  private id_manga;
 
   constructor(private mangaService: MangasService,
     private route: ActivatedRoute,
@@ -43,16 +44,9 @@ export class MangasDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-    if(localStorage.getItem("logged") == null){
-      this.logged = false ;
-    }
-    
-    let id = this.route.snapshot.paramMap.get('id');
+  getInfos(){
     let total = 0;
-
-    this.mangaService.getById(id)
+    this.mangaService.getById(this.id_manga)
       .subscribe(response => {
         this.infos = response;
         for(let i=0;i<this.infos.scoreRelationMangas.length;i++){
@@ -60,32 +54,41 @@ export class MangasDetailsComponent implements OnInit {
         }
         this.score = (total/this.infos.scoreRelationMangas.length);
       });
+  }
 
-      if(localStorage.getItem("token") != null){
-        this.token = localStorage.getItem("token");
-        this.decoded = jwt_decode(this.token);
-        this.userService.getByUsername(this.decoded['username']).subscribe( response => {
-          this.id_user = response
-          this.id_user = this.id_user[0].id;
-        });
-      }
+  ngOnInit() {
+
+    if(localStorage.getItem("logged") == null){
+      this.logged = false ;
+    }
+    
+    this.id_manga = this.route.snapshot.paramMap.get('id');
+    this.getInfos();
+
+    if(localStorage.getItem("token") != null){
+      this.token = localStorage.getItem("token");
+      this.decoded = jwt_decode(this.token);
+      this.userService.getByUsername(this.decoded['username']).subscribe( response => {
+        this.id_user = response
+        this.id_user = this.id_user[0].id;
+      });
+    }
   }
 
   onSubmit(){
-    
-    let id = this.route.snapshot.paramMap.get('id');
 
+    this.id_manga = this.route.snapshot.paramMap.get('id');
     let todayISOString = new Date().toISOString();
 
     const data = {
-      "manga" : "/api/mangas/"+id,
+      "manga" : "/api/mangas/"+this.id_manga,
       "user" : "/api/users/"+this.id_user,
       "date" : todayISOString,
       "comment" : this.comment
     };
     
     this.commentService.postCommentOnManga(data).subscribe();
-    //this.router.navigate(['/mangas/'+id]);
+    this.getInfos();
 
   }
 

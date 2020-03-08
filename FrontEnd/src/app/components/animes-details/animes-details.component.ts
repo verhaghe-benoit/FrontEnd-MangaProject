@@ -22,6 +22,7 @@ export class AnimesDetailsComponent implements OnInit {
   private decoded; 
   private id_user;
   private logged;
+  private anime_id;
 
   constructor( private animesService : AnimesService,
     private commentService : CommentsService,
@@ -30,30 +31,26 @@ export class AnimesDetailsComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog ) { }
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-        width: '50wv',
-        height: '20hv',
-        data: {title: "Are you sure you want to post this comment ?" ,comment: this.comment}
-      });
-  
-      dialogRef.afterClosed().subscribe(dialogResult => {
-        if(dialogResult==true){
-          this.onSubmit()
-        };
-      });
-    }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '50wv',
+      height: '20hv',
+      data: {title: "Are you sure you want to post this comment ?" ,comment: this.comment}
+    });
 
-  ngOnInit() {
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        this.onSubmit()
+      };
+    });
+  }
 
-    if(localStorage.getItem("logged") == null){
-      this.logged = false ;
-    }
+  getInfos(){
 
-    let id = this.route.snapshot.paramMap.get('id');
+    this.anime_id = this.route.snapshot.paramMap.get('id');
     let total = 0;
 
-    this.animesService.getById(id)
+    this.animesService.getById(this.anime_id)
       .subscribe(response => {
         this.infos = response;
         for(let i=0;i<this.infos.scoreRelations.length;i++){
@@ -61,31 +58,41 @@ export class AnimesDetailsComponent implements OnInit {
         }
         this.score = (total/this.infos.scoreRelations.length);
       });
+  }
 
-      if(localStorage.getItem("token") != null){
-        this.token = localStorage.getItem("token");
-        this.decoded = jwt_decode(this.token);
-        this.userService.getByUsername(this.decoded['username']).subscribe( response => {
-          this.id_user = response
-          this.id_user = this.id_user[0].id;
-        });
-      }
+  ngOnInit() {
+
+    if(localStorage.getItem("logged") == null){
+      this.logged = false ;
+    }
+
+    this.getInfos();
+
+    if(localStorage.getItem("token") != null){
+      this.token = localStorage.getItem("token");
+      this.decoded = jwt_decode(this.token);
+      this.userService.getByUsername(this.decoded['username']).subscribe( response => {
+        this.id_user = response
+        this.id_user = this.id_user[0].id;
+      });
+    }
   }
 
   onSubmit(){
     
-    let id = this.route.snapshot.paramMap.get('id');
+    this.anime_id = this.route.snapshot.paramMap.get('id');
 
     let todayISOString = new Date().toISOString();
 
     const data = {
-      "anime" : "/api/animes/"+id,
+      "anime" : "/api/animes/"+this.anime_id,
       "user" : "/api/users/"+this.id_user,
       "date" : todayISOString,
       "comment" : this.comment
     };
     
     this.commentService.postCommentOnAnime(data).subscribe();
+    this.getInfos();
 
   }
 }
