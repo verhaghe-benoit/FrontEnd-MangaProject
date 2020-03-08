@@ -15,15 +15,24 @@ export class ProfileComponent implements OnInit {
   private profile;
   private username;
   private mean_score = 0;
+  private mean_score_manga = 0;
   private token;
   private decoded;
+
   private nb_watching;
   private nb_dropped;
   private nb_onhold;
   private nb_completed;
   private nb_planned;
 
+  private nb_reading;
+  private nb_dropped_manga;
+  private nb_onhold_manga;
+  private nb_completed_manga;
+  private nb_planned_manga;
+
   private doughnutChartLabels: Label[] = ['Completed', 'Watching', 'Dropped','On-Hold','Planned to watch'];
+  private doughnutChartLabelsManga: Label[] = ['Completed', 'Reading', 'Dropped','On-Hold','Planned to watch'];
   private doughnutChartType: ChartType = 'doughnut';
   private doughnutChartColors: Array<any> = [
     { backgroundColor: ['#3333cc','#009900','#b30000','#ffcc00','#a6a6a6'] }
@@ -38,18 +47,9 @@ export class ProfileComponent implements OnInit {
     }
   };
   private doughnutChartData: number[] = [0,0,0,0,0];
+  private doughnutChartDataManga: number[] = [0,0,0,0,0];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
-
-  setVariables(w,d,o,c,p){
-    this.nb_watching = w;
-    this.nb_dropped = d;
-    this.nb_onhold = o;
-    this.nb_completed = c;
-    this.nb_planned = p;
-    return this.nb_completed;
-  }
-  
+  constructor(private userService: UserService, private route: ActivatedRoute) { }  
 
   ngOnInit() {
 
@@ -64,12 +64,21 @@ export class ProfileComponent implements OnInit {
       .subscribe(response => {
         
         var nb_elements = 0;
+        var nb_elements_manga = 0;
         this.profile = response;
+        
         this.nb_watching = 0;
         this.nb_dropped = 0;
         this.nb_onhold = 0;
         this.nb_completed = 0;
         this.nb_planned = 0;
+
+        this.nb_reading = 0;
+        this.nb_dropped_manga = 0;
+        this.nb_onhold_manga = 0;
+        this.nb_completed_manga = 0;
+        this.nb_planned_manga = 0;
+        
         
         for(var i=0;i<this.profile.length;i++){
           for(var j=0;j<this.profile[i].scoreRelations.length;j++){
@@ -95,8 +104,37 @@ export class ProfileComponent implements OnInit {
             } 
           }
         }
+
+        for(var k=0;k<this.profile.length;k++){
+          for(var l=0;l<this.profile[k].scoreRelationMangas.length;l++){
+            this.mean_score_manga += this.profile[k].scoreRelationMangas[l].score;
+            nb_elements_manga++;
+
+            switch(this.profile[k].scoreRelationMangas[l].status) {
+              case "Completed":
+                this.nb_completed_manga++;
+                break;
+              case "Reading":
+                this.nb_reading++;
+                break;
+              case "On-Hold":
+                this.nb_onhold_manga++;
+                break;
+              case "Plan to read":
+                this.nb_planned_manga++;
+                break;
+              case "Dropped":
+                this.nb_dropped_manga++;
+                break;
+            } 
+          }
+        }
+
+        this.mean_score_manga = this.mean_score_manga/nb_elements_manga;
         this.mean_score = this.mean_score/nb_elements;
+
         this.doughnutChartData = [this.nb_completed, this.nb_watching, this.nb_dropped,this.nb_onhold,this.nb_planned];
+        this.doughnutChartDataManga = [this.nb_completed_manga, this.nb_reading, this.nb_dropped_manga,this.nb_onhold_manga,this.nb_planned_manga];
       });
   }
 }

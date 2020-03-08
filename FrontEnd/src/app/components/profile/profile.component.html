@@ -14,6 +14,7 @@
     <mat-card class="panel">
         <mat-card-header>
             <mat-card-title>Anime Statistics</mat-card-title>
+            <mat-card-subtitle> Mean score : {{mean_score}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div style="float: left;margin-right: 30px;"> 
@@ -48,32 +49,33 @@
 
     <mat-card class="panel" style="margin-top: 40px;">
         <mat-card-header>
-        <mat-card-title>Manga Statistics</mat-card-title>
+            <mat-card-title>Manga Statistics</mat-card-title>
+            <mat-card-subtitle> Mean score : {{mean_score_manga}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div style="float: left;margin-right: 30px;"> 
                 <ul style="list-style: none;">
-                    <li> Reading </li>
-                    <li> Completed </li>
-                    <li> On-Hold </li>
-                    <li> Dropped </li>
-                    <li> Plan to read </li>
+                    <li> <mat-icon class="green-icon">lens</mat-icon> Reading </li>
+                    <li> <mat-icon class="blue-icon">lens</mat-icon> Completed </li>
+                    <li> <mat-icon class="yellow-icon">lens</mat-icon> On-Hold </li>
+                    <li> <mat-icon class="red-icon">lens</mat-icon> Dropped </li>
+                    <li> <mat-icon class="gray-icon">lens</mat-icon> Plan to read </li>
                 </ul>
             </div>
             <div style="float: left;"> 
                 <ul style="list-style: none;">
-                    <li> {{nb_watching}} </li>
-                    <li> {{nb_completed}} </li>
-                    <li> {{nb_onhold}} </li>
-                    <li> {{nb_dropped}} </li>
-                    <li> {{nb_planned}} </li>
+                    <li> {{nb_reading}} </li>
+                    <li> {{nb_completed_manga}} </li>
+                    <li> {{nb_onhold_manga}} </li>
+                    <li> {{nb_dropped_manga}} </li>
+                    <li> {{nb_planned_manga}} </li>
                 </ul>
             </div>
             <div style="float: right;margin-top:35px">
                 <canvas baseChart height="80px"
-                [data]="doughnutChartData"
+                [data]="doughnutChartDataManga"
                 [colors]="doughnutChartColors"
-                [labels]="doughnutChartLabels"
+                [labels]="doughnutChartLabelsManga"
                 [chartType]="doughnutChartType"
                 [options]="doughnutChartOptions">
             </canvas>

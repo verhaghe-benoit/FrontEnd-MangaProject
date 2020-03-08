@@ -5,6 +5,8 @@
     margin-left: 2%;
     background-color: #424242;
     float: left;
+    color: white;
+    opacity: 75%;
 }
 
 .panel-container{
@@ -17,6 +19,13 @@
 .panel{
     height: 200px;
     background-color: #424242;
+    color: white;
+    opacity: 75%;
+}
+
+.mat-card-subtitle{
+    color: white;
+    opacity: 75%;
 }
 
 canvas{
@@ -29,6 +38,8 @@ li{
     color:#212121;
     font-family: Acme;
     font-size: 18px;
+    color: white;
+    opacity: 75%;
 }
 
 .mat-icon {
