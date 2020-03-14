@@ -1,19 +1,21 @@
+
 <h1 mat-dialog-title>
     {{data.title}}
-  </h1>
+</h1>
   
-  <div *ngIf='logged != false;' mat-dialog-content>
-    <p style="white-space: pre-wrap;">{{data.comment}}</p>
-  </div>
-  
+<div *ngIf='logged != false;' mat-dialog-content>
+  <p style="white-space: pre-wrap;">{{data.comment}}</p>
+</div>
 
-  <div *ngIf='logged == false; else elseBlock' mat-dialog-actions>
-    <button mat-button (click)="onDismiss()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="gotologging()">Go to logging page</button>
+
+<div *ngIf='logged == false; else elseBlock' mat-dialog-actions>
+  <button mat-button (click)="onDismiss()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="gotologging()">Go to logging page</button>
+</div>
+<ng-template #elseBlock>
+  <div mat-dialog-actions style="justify-content: center;">
+    <button mat-button (click)="onDismiss()" >No</button>
+    <button mat-raised-button color="primary" style="color: white;"(click)="onConfirm()">Yes</button>
   </div>
-  <ng-template #elseBlock>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onDismiss()">No</button>
-      <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
-    </div>
-  </ng-template>
+</ng-template>
+

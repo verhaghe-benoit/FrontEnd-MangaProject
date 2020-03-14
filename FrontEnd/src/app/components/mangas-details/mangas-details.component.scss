@@ -11,6 +11,7 @@
     margin-left: 5%;
     padding: 0;
     font-family: Acme;
+    padding-bottom: 40px;
 }
 
 .comment_card{
@@ -54,6 +55,14 @@
     text-align:center;
 }
 
+.not_connected{
+    color: #F45F4A;
+    padding: 5px;
+    padding-left: 80%;
+    font-family: Acme;
+    font-size: 12px;
+}
+
 
 .li{
     color:#212121;
@@ -76,10 +85,14 @@
 .info_width{
     margin-left: 15px;
     width: 150px;
+    color:white;
+    opacity: 75%;
 }
 
 .align_info{
     margin-left: 10px;
+    color:white;
+    opacity: 75%;
 }
 
 .synopsis{

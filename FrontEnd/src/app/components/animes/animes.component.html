@@ -41,21 +41,21 @@
             <mat-card-content>
                     <img src="../../../assets/91days.jpg" style="float:left;width: auto;  height: 150px;">
                     <div class="title" routerLink="/animes/{{animes.id}}" routerLinkActive="active"> {{animes.title}}</div>
-                    <ul style = "float: left;list-style: none;">
+                    <ul style = "float: left;list-style: none;color: white;opacity: 75%;">
                         <li> Score :  </li>
                         <li> Status :  </li>
                         <li> Episodes :  </li>
                         <li> Author(s) :  </li>
                     </ul>
-                    <ul style = "float: left;list-style: none;margin-left:-1%;width:100px;">
+                    <ul style = "float: left;list-style: none;margin-left:-1%;width:200px;color: white;opacity: 75%;">
                         <li> {{animes.score || "No score yet"}} </li>
                         <li> {{animes.status}}  </li>
                         <li> {{animes.episodes}} </li>
                         <li> 
                         </li>
                     </ul>
-                    <mat-chip-list style="float:left;margin-left: 60px;" >
-                    <mat-chip style="font-size: 12px;" [ngStyle]="{'background-color': genre.color}" *ngFor="let genre of animes.genreLists"> {{genre.genre}}</mat-chip>
+                    <mat-chip-list style="margin-left: 60px;" >
+                        <mat-chip style="font-size: 12px;color: white;opacity: 75%;" [ngStyle]="{'background-color': genre.color}" *ngFor="let genre of animes.genreLists"> {{genre.genre}}</mat-chip>
                     </mat-chip-list>
             </mat-card-content>
         </mat-card>

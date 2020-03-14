@@ -21,6 +21,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MangasComponent } from './components/mangas/mangas.component';
 import { MangasDetailsComponent } from './components/mangas-details/mangas-details.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -56,4 +57,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ConfirmDialogComponent
  ]
 })
-export class AppModule { }
+export class AppModule {
+      constructor(overlayContainer: OverlayContainer) {
+          overlayContainer.getContainerElement().classList.add('dialog-dark-theme');
+      }
+}

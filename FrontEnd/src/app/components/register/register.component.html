@@ -1,39 +1,40 @@
 
 <div class="register-page">
-
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div class="control" *ngIf="f.username.errors.required">Username is required</div>
-            <div class="control" *ngIf="f.username.errors['uniqueUsername']">Username already exists</div>
-        </div>
+    <div style="width: 25%;margin: auto;padding-top: 70px;">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         
-        <label for="email">Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div class="control" *ngIf="f.email.errors.required">Email is required</div>
-            <div class="control" *ngIf="f.email.errors.email">Email must be a valid email address</div>
-            <div class="control" *ngIf="f.email.errors['uniqueEmail']">Email already exists</div>
-        </div>
-        
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div class="control" *ngIf="f.password.errors.required">Password is required</div>
-            <div class="control" *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
-        </div>
-        
-        <label for="confirm_password">Confirm Password</label>
-        <input type="password" formControlName="confirm_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }" />
-        <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
-            <div class="control" *ngIf="f.confirm_password.errors.required">Confirm Password is required</div>
-            <div class="control" *ngIf="f.confirm_password.errors.mustMatch">Passwords must match</div>
-        </div>
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div class="control" *ngIf="f.username.errors.required">Username is required</div>
+                <div class="control" *ngIf="f.username.errors['uniqueUsername']">Username already exists</div>
+            </div>
             
-        <button type="submit">Register</button>
-    </form>
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div class="control" *ngIf="f.email.errors.required">Email is required</div>
+                <div class="control" *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                <div class="control" *ngIf="f.email.errors['uniqueEmail']">Email already exists</div>
+            </div>
+            
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div class="control" *ngIf="f.password.errors.required">Password is required</div>
+                <div class="control" *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+            </div>
+            
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" formControlName="confirm_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }" />
+            <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
+                <div class="control" *ngIf="f.confirm_password.errors.required">Confirm Password is required</div>
+                <div class="control" *ngIf="f.confirm_password.errors.mustMatch">Passwords must match</div>
+            </div>
+                
+            <button type="submit">Register</button>
+        </form>
+    </div>
       
     <div class="svg-design">
         <img  width="100%" src="../../../assets/register-wave.png">

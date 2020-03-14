@@ -10,14 +10,8 @@
     bottom: 0;
 }
 
-form{
-    position: absolute;
-    left:37.5%;
-    top: 10%;
-    width: 100%;
-}
 input{
-    width: 25%;
+    width: 100%;
     height: 40px;
     padding-left: 10px;
     margin-top: 5px;
@@ -38,7 +32,7 @@ input{
     color: #8F8F8F;
   }
   button[type=submit] {
-    width: 25%;
+    width: 100%;
     height: 40px;
     color: white;
     padding: 0;

@@ -5,7 +5,15 @@
       <mat-card-title>{{username}}'s Profile</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        
+        <!--
+        <label class="hoverable" for="fileInput">
+            <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
+            <div class="hover-text">Choose file</div>
+            <div class="background"></div>
+        </label>
+        <br/>
+        <input id="fileInput" type='file' (change)="onSelectFile($event)">
+        <button *ngIf="url" (click)="delete()" >delete</button>-->
     </mat-card-content>
   </mat-card>
   

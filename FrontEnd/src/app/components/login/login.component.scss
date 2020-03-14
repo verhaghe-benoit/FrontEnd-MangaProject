@@ -9,14 +9,8 @@
     bottom: 0;
 }
 
-form{
-    position: absolute;
-    left:37.5%;
-    top: 22%;
-    width: 100%;
-}
 input{
-    width: 25%;
+    width: 100%;
     height: 40px;
     padding-left: 10px;
     margin-top: 5px;
@@ -38,7 +32,7 @@ input{
   }
 
   button[type=submit] {
-    width: 25%;
+    width: 100%;
     height: 40px;
     color: white;
     padding: 0;
@@ -53,18 +47,12 @@ input{
   }
 
   .grey{
-    position: absolute;
-    left:43%;
-    top: 10%;
     width: 100%;
     font-family: Acme;
     color: #8F8F8F;
   }
 
   .grey2{
-    position: absolute;
-    left:44%;
-    bottom: 43%;
     font-family: Acme;
     color: #8F8F8F;
     background-color: Transparent;
@@ -91,9 +79,6 @@ input{
 }
 
   .orange{
-    position: absolute;
-    left:46.5%;
-    top: 14%;
     font-family: Acme;
     color: #F45F4A;
     background-color: Transparent;

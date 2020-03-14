@@ -23,6 +23,7 @@ export class AnimesDetailsComponent implements OnInit {
   private id_user;
   private logged;
   private anime_id;
+  private isShow;
 
   constructor( private animesService : AnimesService,
     private commentService : CommentsService,
@@ -62,6 +63,8 @@ export class AnimesDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    this.isShow = false;
+
     if(localStorage.getItem("logged") == null){
       this.logged = false ;
     }
@@ -94,5 +97,9 @@ export class AnimesDetailsComponent implements OnInit {
     this.commentService.postCommentOnAnime(data).subscribe();
     this.getInfos();
 
+  }
+
+  toggleDisplay() {
+    this.isShow = true;
   }
 }

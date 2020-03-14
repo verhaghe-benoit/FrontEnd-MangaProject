@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   private mean_score_manga = 0;
   private token;
   private decoded;
+  private url;
 
   private nb_watching;
   private nb_dropped;
@@ -137,4 +138,21 @@ export class ProfileComponent implements OnInit {
         this.doughnutChartDataManga = [this.nb_completed_manga, this.nb_reading, this.nb_dropped_manga,this.nb_onhold_manga,this.nb_planned_manga];
       });
   }
+
+  /*
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
+  }
+  public delete(){
+    this.url = null;
+  }*/
+
 }

@@ -22,6 +22,7 @@ export class MangasDetailsComponent implements OnInit {
   private decoded; 
   private id_user;
   private id_manga;
+  private isShow;
 
   constructor(private mangaService: MangasService,
     private route: ActivatedRoute,
@@ -58,6 +59,8 @@ export class MangasDetailsComponent implements OnInit {
 
   ngOnInit() {
 
+    this.isShow = false;
+
     if(localStorage.getItem("logged") == null){
       this.logged = false ;
     }
@@ -90,6 +93,12 @@ export class MangasDetailsComponent implements OnInit {
     this.commentService.postCommentOnManga(data).subscribe();
     this.getInfos();
 
+  }
+
+  
+ 
+  toggleDisplay() {
+    this.isShow = true;
   }
 
 }
