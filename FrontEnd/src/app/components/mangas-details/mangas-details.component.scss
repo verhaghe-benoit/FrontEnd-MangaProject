@@ -27,17 +27,17 @@
 
 .comment_card .mat-card-title{
     color: #F45F4A;
-    opacity: 100%;
+    opacity: 1;
 }
 
 .comment_card .mat-card-subtitle{
     color: white;
-    opacity: 45%;
+    opacity: 0.45;
 }
 
 .comment_card .mat-card-content{
     color: white;
-    opacity: 75%;
+    opacity: 0.75;
 }
 
 
@@ -86,13 +86,13 @@
     margin-left: 15px;
     width: 150px;
     color:white;
-    opacity: 75%;
+    opacity: 0.75;
 }
 
 .align_info{
     margin-left: 10px;
     color:white;
-    opacity: 75%;
+    opacity: 0.75;
 }
 
 .synopsis{
@@ -102,7 +102,7 @@
     text-align: justify;
     font-size: 20px;
     color: #FFFFFF;
-    opacity: 75%;
+    opacity: 0.75;
     font-family: "EB Garamond";
     white-space: pre-wrap;
 }
@@ -110,7 +110,7 @@
 ::ng-deep.mat-form-field-underline {
     /*change color of underline*/
     background-color: white !important;
-    opacity: 50%;
+    opacity: 0.5;
 } 
 
 ::ng-deep.mat-form-field-ripple {
@@ -126,5 +126,5 @@
 ::ng-deep .mat-form-field-label {
     /*change color of label*/
     color: white !important;
-    opacity: 50%;
+    opacity: 0.5;
 }
