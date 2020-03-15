@@ -4,6 +4,11 @@ Since I am a fan of manga and anime, I always wanted to be able to keep a track 
 So for a long time I used [MyAnimeList](https://myanimelist.net/)'s website . However the general design of the website didn't suit me well, so I decided to try to create mine.
 You can also find the API I created for this website on this [repository](https://github.com/verhaghe-benoit/BackEnd-MangaProject).
 
+## Disclaimer
+
+Some features are still in development and the website general appearance might change.
+I will still try to keep the screenshot up to date.
+
 ## Installing
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
@@ -47,8 +52,5 @@ Login :
 ![Details1](Screenshots/Details1.png)
 ![Details2](Screenshots/Details2.png)
 
-## Disclaimer
 
-Some features are still in development and the website general appearance might change.
-I will still try to keep the screenshot up to date.
 
